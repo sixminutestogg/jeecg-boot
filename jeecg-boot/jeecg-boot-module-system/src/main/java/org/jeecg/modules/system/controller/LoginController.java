@@ -373,7 +373,7 @@ public class LoginController {
 		try {
 			String code = RandomUtil.randomString(BASE_CHECK_CODES,4);
 			String key = MD5Util.MD5Encode(code+System.currentTimeMillis(), "utf-8");
-			redisUtil.set(key, code, 60);
+			redisUtil.set(key, code, 60);//设置过期时间为30分钟
 			map.put("key", key);
 			map.put("code",code);
 			result.setResult(map);
